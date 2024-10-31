@@ -1,0 +1,18 @@
+version: '3.1'
+
+networks:
+  test_project_golang:
+    external: true
+
+services:
+  http:
+    build:
+      context: ../
+      dockerfile: ./build/Dockerfile
+    hostname: http
+    container_name: http
+    restart: always
+    ports:
+      - "127.0.0.1:8080:8080"
+    networks:
+      - test_project_golang
